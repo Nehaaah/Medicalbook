@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'include.html' %}
+    {% load static %}
+</head>
+
+<body>
+    {% include 'adminnav.html' %}
+    <div id="wrapper">
+        {% include 'patient_nav.html' %}
+    </div>
+        <div class="container">
+            <table class="table table-stripped">
+                <tr>
+                <th>Patient Name</th>
+                <th>Appointment date</th>
+                <th>Appointment time</th>
+                <th>Symptoms</th>
+                <th>prescription</th>
+                </tr>
+                {% for i in appointments %}
+                <tr>
+                    {{i.patientname}}{{i.appointmenttime}}{{i.appointmentdate}}
+                        <td>{{i.patientname}}</td>
+                        <td>{{i.appointmentdate}}</td>
+                        <td>{{i.appointmenttime}}</td>
+                        <td>{{i.symptoms}}</td>
+                        <td>{{i.prescription}}</td>
+                        <td>
+                            {% if i.prescription == NULL %}
+                                No prescription
+                            {% else %}
+                                {{i.prescription}}
+                            {% endif %}
+                        </td>
+                </tr>
+                {% endfor %} 
+        
+            </table>
+        </div>
+        </body>
